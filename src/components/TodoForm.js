@@ -16,14 +16,16 @@ export default () => {
             id: nextTodoId,
             complete: false
         }))
+        setTitle("");
+        setBody("")
     }
 
     return (
         <form onSubmit={handleSubmit}>
             Title: 
-            <input onChange={(e) => setTitle(e.target.value) }/>
+            <input onChange={(e) => setTitle(e.target.value) } value={title} required/>
             Body: 
-            <textarea onChange={(e) => setBody(e.target.value) }/>
+            <textarea onChange={(e) => setBody(e.target.value) } value={body} required/>
             <button type="submit">Add Todo</button>
         </form>
     )

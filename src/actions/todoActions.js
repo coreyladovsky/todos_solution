@@ -7,7 +7,7 @@ export const addTodo = (todo) => {
     }
 }
 
-export const toggleTod = (todoId) => {
+export const toggleTodo = (todoId) => {
     return {
         type: TOGGLE_TODO, 
         payload: todoId
