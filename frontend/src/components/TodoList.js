@@ -1,6 +1,7 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, {useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import TodoListItem from './TodoListItem';
+import { fetchTodos } from '../actions/todoActions';
 
 
 const getVisibleTodos = (todos, filter) => {
@@ -14,12 +15,17 @@ const getVisibleTodos = (todos, filter) => {
 }
 
 export default () => {
-    const todos = useSelector((state) => state.todos);
+    const todos = useSelector((state) => Object.values(state.todos));
     const filter = useSelector((state) => state.visibilityFilter);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchTodos());
+    }, [])
 
     return (
         <ul>
-            {getVisibleTodos(todos, filter).map(todo => {
+            {getVisibleTodos(todos, filter).reverse().map(todo => {
                 return <TodoListItem key={todo.id} todo={todo} />
             })}
         </ul>

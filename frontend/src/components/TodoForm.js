@@ -12,9 +12,7 @@ export default () => {
         e.preventDefault();
         dispatch(addTodo({
             title, 
-            body,
-            id: nextTodoId,
-            complete: false
+            body
         }))
         setTitle("");
         setBody("")

@@ -9,6 +9,18 @@ const getAllTodos = async (req, res, next) => {
     }
 }
 
+const addTodo = async (req, res, next) => {
+    try {
+        const todo = await db.one("INSERT INTO todos (title, body) VALUES(${title}, ${body}) RETURNING *", req.body)
+        res.json({
+            todo, 
+            message: "NEW TODO CREATED"
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+
 const toggleTodo = async (req, res, next) => {
     try {
         const todo = await db.one("UPDATE todos SET complete = NOT complete WHERE id = $1 RETURNING *", req.params.id);
@@ -21,4 +33,4 @@ const toggleTodo = async (req, res, next) => {
     }
 }
 
-module.exports = { getAllTodos, toggleTodo };
+module.exports = { getAllTodos, toggleTodo, addTodo };
