@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/coreyladovsky/todos_solution/issues"
   },
-  "homepage": "https://github.com/coreyladovsky/todos_solution#readme"
+  "homepage": "https://github.com/coreyladovsky/todos_solution#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
 }

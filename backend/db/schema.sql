@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS todo_app;
-CREATE DATABASE todo_app;
+-- DROP DATABASE IF EXISTS todo_app;
+-- CREATE DATABASE todo_app;
 
-\c todo_app;
+-- \c todo_app;
 
 CREATE TABLE todos (
     id SERIAL PRIMARY KEY, 

@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const PORT = 3005;
+const dotenv = require("dotenv").config();
+
+const PORT = process.env.PORT || 3005;
 const { getAllTodos, toggleTodo, addTodo } = require("./queries/todos");
 
 const app = express();
