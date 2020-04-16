@@ -36,5 +36,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://todo-app-cl-720.herokuapp.com/"
+  "proxy": "http://localhost:3005"
 }
