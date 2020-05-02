@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { ADD_TODO, TOGGLE_TODO, RECEIVE_ALL_TODOS } from './actionTypes';
-const API = "https://todo-app-cl-720.herokuapp.com";
+import { apiURL } from '../util/util';
+
+const API = apiURL();
 const receiveTodo = (todo) => {
     return {
         type: ADD_TODO, 
