@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import TodoListItem from './TodoListItem';
 import { fetchTodos } from '../actions/todoActions';
+import { AuthContext } from '../providers/AuthProvider';
 
 
 const getVisibleTodos = (todos, filter) => {
@@ -18,9 +19,10 @@ export default () => {
     const todos = useSelector((state) => Object.values(state.todos));
     const filter = useSelector((state) => state.visibilityFilter);
     const dispatch = useDispatch();
+    const { token } = useContext(AuthContext);
 
     useEffect(() => {
-        dispatch(fetchTodos());
+        dispatch(fetchTodos(token));
     }, [])
 
     return (

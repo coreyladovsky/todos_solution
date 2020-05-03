@@ -17,9 +17,9 @@ const receiveAllTodos = todos => {
     }
 }
 
-export const fetchTodos = () => async dispatch => {
+export const fetchTodos = (token) => async dispatch => {    
     try {
-        let res = await axios.get(`${API}/todos`);
+        let res = await axios.post(`${API}/todos`, {token});
         dispatch(receiveAllTodos(res.data.todos))
     } catch (err) {
         console.log(err)

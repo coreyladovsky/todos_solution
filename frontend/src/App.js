@@ -6,10 +6,12 @@ import SignUp from './components/SignUp'
 import NavBar from './components/NavBar'
 import { Route } from 'react-router-dom';
 import Login from './components/Login';
+import AuthProvider from './providers/AuthProvider';
 
 function App() {
   return (
     <div className="App">
+    <AuthProvider>
     <NavBar />
       <Route exact path="/signup">
         <SignUp />
@@ -23,6 +25,7 @@ function App() {
       <Route exact path="/">
         <Home />
       </Route>
+    </AuthProvider>
     </div>
   );
 }

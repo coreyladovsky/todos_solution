@@ -7,7 +7,6 @@ export default function NavBar() {
        useEffect(() => {
          const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
            if (user) {
-               debugger
              setUser(user)
            } else {
                setUser(null)
