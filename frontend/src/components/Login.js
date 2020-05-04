@@ -5,22 +5,13 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
-
-  useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        history.push("/");
-      }
-    });
-    return unsubscribe;
-  }, []);
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       let res = await firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password);
+      .auth()
+      .signInWithEmailAndPassword(email, password);
       console.log("Returns: ", res);
     } catch (err) {
       // const { message } = err;
@@ -28,7 +19,7 @@ export default function Login() {
       // this.setState({ error: message });
     }
   };
-
+  
   return (
     <div>
       <h1>Login</h1>
@@ -49,3 +40,12 @@ export default function Login() {
     </div>
   );
 }
+
+  // useEffect(() => {
+  //   const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+  //     if (user) {
+  //       history.push("/");
+  //     }
+  //   });
+  //   return unsubscribe;
+  // }, []);

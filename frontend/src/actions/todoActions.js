@@ -19,7 +19,13 @@ const receiveAllTodos = todos => {
 
 export const fetchTodos = (token) => async dispatch => {    
     try {
-        let res = await axios.post(`${API}/todos`, {token});
+        let res = await axios({
+            method: 'get',
+            url: `${API}/todos`,
+            headers: {
+              'AuthToken': token
+            }
+        });
         dispatch(receiveAllTodos(res.data.todos))
     } catch (err) {
         console.log(err)

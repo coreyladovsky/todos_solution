@@ -5,6 +5,7 @@ const dotenv = require("dotenv").config();
 
 const PORT = process.env.PORT || 3005;
 const { getAllTodos, toggleTodo, addTodo } = require("./queries/todos");
+const { createUser } = require('./queries/auth');
 const { checkFirebaseToken } = require('./middleware/auth');
 const app = express();
 
@@ -12,9 +13,10 @@ app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-// app.post("/todos", addTodo)
+app.post("/users", createUser);
 
-app.post("/todos", checkFirebaseToken, getAllTodos)
+app.post("/todos", addTodo)
+app.get("/todos", checkFirebaseToken, getAllTodos)
 
 app.get("/todos/:id", toggleTodo)
 

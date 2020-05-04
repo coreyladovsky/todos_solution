@@ -7,21 +7,22 @@ import NavBar from './components/NavBar'
 import { Route } from 'react-router-dom';
 import Login from './components/Login';
 import AuthProvider from './providers/AuthProvider';
+import { ProtectedRoute , AuthRoute } from './util/auth_util';
 
 function App() {
   return (
     <div className="App">
     <AuthProvider>
     <NavBar />
-      <Route exact path="/signup">
+      <AuthRoute exact path="/signup">
         <SignUp />
-      </Route>
-      <Route exact path="/login">
+      </AuthRoute>
+      <AuthRoute exact path="/login">
         <Login />
-      </Route>
-      <Route exact path="/todos">
+      </AuthRoute>
+      <ProtectedRoute exact path="/todos">
         <TodoMain />
-      </Route>
+      </ProtectedRoute>
       <Route exact path="/">
         <Home />
       </Route>

@@ -23,9 +23,9 @@ const AuthProvider = ({children}) => {
          setLoading(true)
        const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
          if (user) {
-                 const { email, uid } = user;
-                 const lastLogin = user.metadata.lastSignInTime;
-           setCurrentUser({ email, uid, lastLogin });
+            const { email, uid } = user;
+            const lastLogin = user.metadata.lastSignInTime;
+            setCurrentUser({ email, uid, lastLogin });
             getFirebaseIdToken().then(() => {
                 setLoading(false)
             })
