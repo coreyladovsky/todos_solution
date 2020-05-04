@@ -32,9 +32,18 @@ export const fetchTodos = (token) => async dispatch => {
     }
 }
 
-export const addTodo = (todo) => async dispatch => {
+export const addTodo = (todo, token) => async dispatch => {
     try {
-        let res = await axios.post(`${API}/todos`, todo);
+        let res = await axios(
+          {
+            method: "post",
+            url: `${API}/todos`,
+            headers: {
+                'AuthToken': token
+            },
+            data: todo
+          }
+        );
         dispatch(receiveTodo(res.data.todo))
     } catch (err) {
         console.log(err)

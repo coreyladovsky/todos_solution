@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 app.post("/users", createUser);
 
-app.post("/todos", addTodo)
+app.post("/todos", checkFirebaseToken, addTodo)
 app.get("/todos", checkFirebaseToken, getAllTodos)
 
 app.get("/todos/:id", toggleTodo)
